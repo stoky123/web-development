@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h:form id="empForm">
+			<p:panel header="Shoe Info" id="empInfoPnl">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="brand" value="Brand: " />
+					<p:inputText id="brand" size="40"
+						value="#{emplController.empUiTO.brand}" required="true"
+						requiredMessage="Please enter brand name " />
+					<p:outputLabel for="model" value="Model: " />
+					<p:inputText id="model" size="40"
+						value="#{emplController.empUiTO.model}" />
+					<p:outputLabel for="description" value="Description: " />
+					<p:inputText id="description"
+								 value="#{emplController.empUiTO.description}" size="40"
+								 label="Description">
+
+					</p:inputText>
+					<p:outputLabel for="price" value="Price: " />
+					<p:inputTextarea id="price" size="40"
+									 value="#{emplController.empUiTO.price}"
+									 required="true"/>
+
+					<h:commandButton value="#{emplController.actionLabel}"
+						action="#{emplController.doSaveInfoEmpl}">
+						<f:ajax execute="empForm" render="emplist empInfoPnl" />
+					</h:commandButton>
+				</h:panelGrid>
+			</p:panel>
+			<p:panel header="Shoe List" id="emplist">
+				<p:dataTable id="table" var="emp"
+					value="#{emplController.empUiToList}">
+					<p:column>
+						<f:facet name="header">Shoe Id</f:facet>
+						<h:outputText value="#{emp.shoeId}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Brand</f:facet>
+						<h:outputText value="#{emp.brand}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Model </f:facet>
+						<h:outputText value="#{emp.model}">
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Price </f:facet>
+						<h:outputText value="#{emp.price}">
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Description </f:facet>
+						<h:outputText value="#{emp.description}">
+						</h:outputText>
+					</p:column>
+					<p:column id="action">
+						<f:facet name="header">Action</f:facet>
+						<h:commandLink value="Edit"
+							action="#{emplController.editEmployee(emp)}">
+							<f:ajax execute="action" render="empForm" />
+						</h:commandLink> /
+						  <sec:authorize access="hasRole('ROLE_ADMIN')">
+							<h:commandLink value="Delete"
+								action="#{emplController.deleteEmployee(emp)}">
+								<f:ajax execute="action" render="table" />
+							</h:commandLink>
+						</sec:authorize>
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
