@@ -9,68 +9,68 @@
 	xmlns:sec="http://www.springframework.org/security/tags">
 <ui:composition template="layout.xhtml">
 	<ui:define name="content">
-		<h:form id="empForm">
-			<p:panel header="Shoe Info" id="empInfoPnl">
+		<h:form id="shoeForm">
+			<p:panel header="Shoe Info" id="shoeInfoPnl">
 				<h:panelGrid columns="2">
 					<p:outputLabel for="brand" value="Brand: " />
 					<p:inputText id="brand" size="40"
-						value="#{emplController.empUiTO.brand}" required="true"
+						value="#{shoeController.shoeUiTO.brand}" required="true"
 						requiredMessage="Please enter brand name " />
 					<p:outputLabel for="model" value="Model: " />
 					<p:inputText id="model" size="40"
-						value="#{emplController.empUiTO.model}" />
+						value="#{shoeController.shoeUiTO.model}" required="true" />
 					<p:outputLabel for="description" value="Description: " />
 					<p:inputText id="description"
-								 value="#{emplController.empUiTO.description}" size="40"
+								 value="#{shoeController.shoeUiTO.description}" size="40"
 								 label="Description">
 
 					</p:inputText>
 					<p:outputLabel for="price" value="Price: " />
-					<p:inputTextarea id="price" size="40"
-									 value="#{emplController.empUiTO.price}"
+					<p:inputText id="price" size="40"
+									 value="#{shoeController.shoeUiTO.price}"
 									 required="true"/>
 
-					<h:commandButton value="#{emplController.actionLabel}"
-						action="#{emplController.doSaveInfoEmpl}">
-						<f:ajax execute="empForm" render="emplist empInfoPnl" />
+					<h:commandButton value="#{shoeController.actionLabel}"
+						action="#{shoeController.doSaveInfoShoe}">
+						<f:ajax execute="shoeForm" render="shoelist shoeInfoPnl" />
 					</h:commandButton>
 				</h:panelGrid>
 			</p:panel>
-			<p:panel header="Shoe List" id="emplist">
-				<p:dataTable id="table" var="emp"
-					value="#{emplController.empUiToList}">
-					<p:column>
+			<p:panel header="Shoe List" id="shoelist">
+				<p:dataTable id="table" var="shoe"
+					value="#{shoeController.shoeUiToList}">
+					<p:column id="shoe_id">
 						<f:facet name="header">Shoe Id</f:facet>
-						<h:outputText value="#{emp.shoeId}" />
+						<h:outputText value="#{shoe.shoeId}" />
 					</p:column>
-					<p:column>
+					<p:column id="brand2">
 						<f:facet name="header">Brand</f:facet>
-						<h:outputText value="#{emp.brand}" />
+						<h:outputText value="#{shoe.brand}" />
 					</p:column>
-					<p:column>
+					<p:column id="model2">
 						<f:facet name="header">Model </f:facet>
-						<h:outputText value="#{emp.model}">
+						<h:outputText value="#{shoe.model}">
 						</h:outputText>
 					</p:column>
-					<p:column>
+					<p:column id="price2">
 						<f:facet name="header">Price </f:facet>
-						<h:outputText value="#{emp.price}">
+						<h:outputText value="#{shoe.price} $">
 						</h:outputText>
 					</p:column>
-					<p:column>
+					<p:column id="description2">
 						<f:facet name="header">Description </f:facet>
-						<h:outputText value="#{emp.description}">
+						<h:outputText value="#{shoe.description}">
 						</h:outputText>
 					</p:column>
 					<p:column id="action">
 						<f:facet name="header">Action</f:facet>
 						<h:commandLink value="Edit"
-							action="#{emplController.editEmployee(emp)}">
-							<f:ajax execute="action" render="empForm" />
+							action="#{shoeController.editShoe(shoe)}">
+							<f:ajax execute="action" render="shoeForm" />
 						</h:commandLink> /
 						  <sec:authorize access="hasRole('ROLE_ADMIN')">
 							<h:commandLink value="Delete"
-								action="#{emplController.deleteEmployee(emp)}">
+								action="#{shoeController.deleteShoe(shoe)}">
 								<f:ajax execute="action" render="table" />
 							</h:commandLink>
 						</sec:authorize>

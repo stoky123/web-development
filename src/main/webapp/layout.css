@@ -1,0 +1,61 @@
+* {
+    text-align: center;
+}
+body {
+    background: #000;
+    background: linear-gradient(#999, #333);
+}
+
+td[role="gridcell"] {
+    background: #000;
+    background: linear-gradient(#999, #333);
+    color: white;
+}
+td a:any-link {
+    color: white;
+}
+
+#shoeForm\:table\:shoe_id, #shoeForm\:table\:brand2, #shoeForm\:table\:model2,
+#shoeForm\:table\:price2, #shoeForm\:table\:description2, #shoeForm\:table\:action{
+    background: linear-gradient(#444, #111);
+    color: white;
+}
+
+#shoeForm\:shoelist, #shoeForm\:shoeInfoPnl {
+    background-color: #555555;
+}
+
+#shoeForm\:shoeInfoPnl_content > table {
+    display: block;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    margin:auto;
+}
+
+#shoeForm\:shoeInfoPnl_content {
+    display: block;
+    align-items: center;
+    align-content: center;
+    margin:auto;
+    align-self: center;
+}
+
+#shoeForm\:shoeInfoPnl_content > table > tbody > * {
+    align-items: center;
+    align-content: center;
+    margin:auto;
+    align-self: center;
+}
+
+#shoeForm\:shoeInfoPnl_content > table > tbody > tr {
+    color: white;
+}
+
+#shoeForm\:price,
+#shoeForm\:description,
+#shoeForm\:brand,
+#shoeForm\:model {
+    background-color: #777777;
+    color: white;
+}

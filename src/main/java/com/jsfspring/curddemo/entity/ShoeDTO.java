@@ -21,8 +21,8 @@ import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "SHOE_INFO")
-@NamedQuery(name = "EmployeeDTO.findAll", query = "SELECT a FROM EmployeeDTO a")
-public class EmployeeDTO implements Serializable {
+@NamedQuery(name = "ShoeDTO.findAll", query = "SELECT a FROM ShoeDTO a")
+public class ShoeDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id

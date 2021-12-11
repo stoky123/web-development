@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author s727953
  *
  */
-public class EmployeeUITO implements Serializable {
+public class ShoeUITO implements Serializable {
 
 	private static final long serialVersionUID = 4840260415183676656L;
 	private Long shoeId;
@@ -61,7 +61,7 @@ public class EmployeeUITO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EmployeeUITO [shoeId=" + shoeId + ", brand=" + brand + ", model=" + model + ", price="
+		return "ShoeUITO [shoeId=" + shoeId + ", brand=" + brand + ", model=" + model + ", price="
 				+ String.valueOf(price) + ", description=" + description + "]";
 	}
 
@@ -81,7 +81,7 @@ public class EmployeeUITO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EmployeeUITO other = (EmployeeUITO) obj;
+		ShoeUITO other = (ShoeUITO) obj;
 		if (brand == null) {
 			if (other.brand != null)
 				return false;
