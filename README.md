@@ -19,8 +19,8 @@ Add, delete and update the employee information with with the help of JSF and Sp
 - acess point
 
 #####  Application :
-- http://localhost:9090/jsfspring/employeelist.jsf
+- http://localhost:9090/jsfspring/shoelist.jsf
 #####   H2 DB Console:
 -  http://localhost:9090/jsfspring/h2/
 
-- data.sql will insert some employee information and Department information in h2 db
+- data.sql will insert some shoe information and Department information in h2 db
